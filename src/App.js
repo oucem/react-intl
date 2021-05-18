@@ -1,12 +1,27 @@
 import React from "react";
 import { FormattedDate } from "react-intl";
+
 const formatStyle = {
-  month: "long",
-  day: "numeric",
-  weekday: "long",
+  dateStyle: 'full',
+  timeStyle: 'short',
+
+};
+
+const options = {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric' ,
   hour: "numeric",
-  minute: "numeric"
+  minute: "numeric",
+  timeZone: 'utc'
 };
 
 // https://github.com/yahoo/react-intl/wiki/Components#FormattedDate
-export default () => <FormattedDate {...formatStyle} value={new Date()} />;
+export default () => {
+  return(<>
+    <p>
+      <FormattedDate {...formatStyle} value={new Date()}/>;
+    </p>
+    <FormattedDate {...options} value={new Date()}/>;
+    </>);
+};
